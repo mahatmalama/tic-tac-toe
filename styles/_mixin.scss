@@ -1,0 +1,46 @@
+@mixin bg-img($image, $gradient-direction, $height){
+    // background: url($image), linear-gradient(#eb01a5, #d13531);
+    background: linear-gradient($gradient-direction, rgba(22,22,22,0), rgba(22,22,22,0.6)),
+                url($image)  
+                center 
+                center 
+                no-repeat;
+    background-size: cover;
+    height: $height;
+}
+
+@mixin clearfix{
+    &:before,
+    &:after{
+        content:"";
+        display: table;
+    }
+    &:after{
+        clear: both;
+    }
+}
+
+@mixin img-grid ($columns,$margin){
+    width: ((100% - (($columns - 1) * $margin)) / $columns);
+    &:nth-child(n) {
+        margin-right: $margin;
+        margin-bottom: $margin;
+    }
+    &:nth-child(#{$columns}n) {
+        margin-right: 0px;
+    }
+}
+
+// if 1 parameter, only min width, if 2, min and max
+@mixin break-point ($min-than-max-width...){
+    @if length($min-than-max-width) ==1 {
+        @media (min-width: nth($min-than-max-width, 1)){
+            @content;
+        }
+    } @else {
+        @media (min-width: nth($min-than-max-width, 1))
+        and (max-width: nth($min-than-max-width,2)){
+            @content;  
+        }
+    }
+}

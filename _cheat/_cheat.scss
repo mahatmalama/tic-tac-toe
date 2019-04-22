@@ -1,0 +1,187 @@
+// *********************** COMMANDS *****************//
+
+  /* Visible comment in .css file */
+  // Invisible comment in .css file
+  
+@import "../variables.scss";
+// or
+@import "../variables";
+
+// JS like Functions
+@mixin bg-img($image, $height){
+    background: url($image);
+    height: 0%;;
+}
+
+@mixin mix {
+    @content;
+}
+// use of a function
+@include bg-img("pic.img",300px);
+
+@include mix{
+    // @content
+    width: 100%;
+}
+// invisible style snippet
+%invisible-style{
+    font-family: $text-font;
+}
+.fake{
+    // use of imvisible style snippet
+    @extend %invisible-style;
+    width: 0%;
+
+}
+
+// & pastes the name of the parent and extends it
+&:hover{
+    width: 0px;
+}
+
+// *********************** VARIABLES ****************************//
+
+$variable-with-number: 5;
+
+$variable-with-string: 100px;
+
+// ACCESS
+&:nth-child(#{$variable-with-number}){
+    width: 20px;
+}
+.string-#{$nr}{
+    color: nth($array,$nr);
+}
+
+// INVISIBLE style
+%invisible-style{
+    font-family: $text-font;
+}
+
+// *********************** ARRAYS & ASSOCIATED ARRAYS ****************************//
+
+// list -> ARRAY equivalent
+.list{
+    $var: 
+        20px 
+        0px 
+        20px 
+        0px;
+// access list / array
+    border-radius: nth($var,1)
+}
+//nested list -> associated ARRAY equivalent
+.nested-list{
+    $color-list: (
+        blue:   blue,
+        green:  green,
+        red:    red,
+        pink:   pink,
+    );
+// access nested list / object
+    color: nth(nth($color-list,2),2)
+}
+
+// *********************** SELECTOR ****************************//
+
+// & means extend the name of the class it is in with...
+
+// n means every fifth, not only the first one
+&:nth-child(#{$variable}n) {
+    background: red;
+}
+
+&:nth-child(odd) {
+    background: red;
+}
+&:nth-child(even) {
+background: blue;
+}
+&:nth-child(5) {
+    background: blue;
+}
+// every 5th (n)
+&:nth-child(5n) {
+    background: blue;
+}
+
+&:last-of-type{
+    width: 0px;
+}
+// changes go only to the element nested inside a specified id #
+// (dont work with double nesting!! see css file)
+#only-in-this-section-id & {
+    width: 0px;
+}
+
+// *********************** COLOR ****************************//
+.color{
+    color: complement($main-color);
+    
+    color: transparentize($color, 0.8);
+    
+    color: adjust-hue($color, 0.8);
+    
+}
+
+
+// *********************** @IF @ELSE FUNCT ****************************//
+
+@if (1 > 2) {
+    
+} @else {
+    
+}
+
+@if 1 > 2 {
+       
+} @else {
+
+}
+
+// *********************** LOOPS ****************************//
+
+// @FOR *******************
+@for $i from 1 through 5 {
+    .class-name-#{$i}{
+        width: 0px;
+    }
+}
+// @WHILE ******************
+
+@while $i < 5  {
+    $i : $i +1;
+}
+
+//  @EACH & LIST******************
+$color-btn-names: "default", "hot", "cool";
+$color-btn-values: $main-color, $red, $blue;
+
+@each $name in $color-btn-names {
+    // $i:1; and $i: $i + 1; not possible somehow!
+    $i : index($color-btn-names, $name);
+    
+    .button--#{$name}{
+        @extend %main__button;
+        background-color: nth($color-btn-values, $i);
+    }
+}
+
+//  @EACH & ASSOCIATED LIST ******************
+
+$associated-list:(
+    first: blue,
+    second: green,
+);
+
+@each $before-colon, $after-colon in $btn-color {
+    .class-name--#{$before-colon}{
+        background-color: $after-colon;
+    }
+}
+
+// *********************** @MEDIA QUERIES ****************************//
+
+@media (min-width: nth($min-than-max-width, 1))
+and (max-width: nth($min-than-max-width,2)){
+}

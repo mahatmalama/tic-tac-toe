@@ -1,0 +1,33 @@
+// @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan|Roboto');
+
+// ************ COLORS *************//
+
+$main-color :       #00564b;
+$main-light :       #25b5d5;
+$main-dark :        #002d27;
+
+$second-color :     #56070b;
+$second-light :     #e34c22;
+$second-dark :      #310001;
+
+$third-color:       #033284;
+$forth-color:       #034b2f;
+$fifth-color:       #843002;
+
+$background-color : rgb(38, 38, 38);
+$background-light : rgb(255, 255, 255);
+$background-dark :  rgb(0, 0, 0);
+
+$black:             rgb(0, 0, 0);
+$grey:              #888888;
+$light-grey:        #dfdfdf;
+$dark-grey:         #191919;
+$white:             rgb(255, 255, 255);
+
+// *********** FONT / TEXT ***********//
+
+$headline-font : 'Arial', sans-serif;
+$text-font : 'Arial', sans-serif;
+
+$headline-color : $main-dark;
+$text-color : $black;

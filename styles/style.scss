@@ -1,0 +1,14 @@
+// ***********************
+//  Stylesheet is written in an own interpreatation of BEM (Block Element Modifier):
+//  Block    = .block
+//  Element  = .block__element-name
+//  Modifier = .block--modifier-name | .block__element-name--modifier
+//  *********************** 
+
+@import "normalize";
+@import "variables";
+@import "base";
+@import "mixin";
+
+@import "modules/tic-tac-toe";
+

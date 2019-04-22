@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css?family=Anton|Open+Sans|Srisakdi:700");
+body {
+  margin: 0px;
+  overflow-x: hidden;
+  padding: 0px;
+}
+
+h1 {
+  color: #560000;
+  font-family: "Srisakdi", cursive;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  color: #560000;
+  font-family: "Open Sans", sans-serif;
+}
+
+.checklist {
+  background-color: #dcd2d2;
+  margin: 0;
+  padding: 40px;
+  height: 100vh;
+}
+
+.checklist__headline {
+  text-align: center;
+  font-size: 50px;
+}
+
+.checklist__all-lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.checklist__one-list {
+  width: auto;
+}
+
+.checklist__box-and-text {
+  margin: 10px 10px 10px 10px;
+}
+
+.checklist__text {
+  color: black;
+  font-family: "Open Sans", sans-serif;
+}
+
+.checklist__checkbox {
+  margin-right: 5px;
+}
+/*# sourceMappingURL=style.css.map */

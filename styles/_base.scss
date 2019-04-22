@@ -1,0 +1,45 @@
+.body{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: $text-font;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: $headline-font;
+}
+
+
+// *********************** Buttons *****************//
+
+
+%main__button{
+    font-family: $text-font;
+    color: $white;
+    margin: 5px;
+    padding: 5px 15px;
+
+}
+
+$btn-color:(
+    default: $main-color,
+);
+
+@each $modifier, $color-value in $btn-color {
+
+    .button--#{$modifier}{
+        @extend %main__button;
+        background-color: $color-value;
+        &:hover{
+            text-shadow: 1px 2px 2px #000000;
+            color: $white;
+            background-color: complement($color-value);
+        }
+    }
+}
+
+.button--inactive{
+    @extend %main__button;
+    background-color: $light-grey;
+    color: $grey;
+}

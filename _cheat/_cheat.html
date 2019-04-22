@@ -1,0 +1,297 @@
+<!-- ---------------------- SHORTCUTS ----------------------------- -->
+
+<!-- HTML SKELET:       :   ! tab                        -->
+
+                <!-- NESTING: -->
+
+<!-- tag   NESTING      :   nav>ul>li                    -->
+<!-- div   NESTING      :   .class>.otherClass           -->
+<!-- table NESTING      :   table>.row>.col              -->
+<!-- list  NESTING      :   ul>.class                    -->
+
+<!-- GROUPING:          :   (div>(li>a)*3)+div           -->
+<!-- MULTIPLY           :   ul>li*5                      -->
+<!-- NUMBERING          :   ul>li.item$*5                -->
+<!-- CLASS ID           :   form#search.wide.big.blue    -->
+<!-- CLIMB UP:          :   div+div>p>span+em^^bq        -->
+
+<!-- custom ATTRIBUTE   :   li[itemprop="ingredients" role="main"]   -->
+
+<!-- TEXT               :   a{text_inside}               -->
+
+                 <!-- LINKS -->
+         
+<!-- css     LINK       :   link:css                     -->
+<!-- favicon LINK       :   link:favicon                 -->
+         
+                  <!-- INPUT -->
+
+<!-- time   INPUT       :   input:time                   -->
+<!-- tel    INPUT       :   input:tel                    -->
+<!-- nr     INPUT       :   input:nr                     -->
+<!-- color  INPUT       :   input:color                  -->
+<!-- checkbox           :   input:checkbox, input:c      -->
+
+
+<!-- ---------------------- CLEAN CODE!!!! ----------------------------- -->
+
+<!-- As less comments as possible!!! let the code speak for itself!!! -->
+<!-- only meaningfull names!!! -->
+<!-- Dont let functions and variables do multiple tasks! -->
+<!-- Write tests, tests and more tests! Test driving development -->
+
+
+<!-- ---------------------- SECTION TAGS ----------------------------- -->
+
+<!-- Metadata such as title etc is written in the head-->
+<head>
+    <!-- title of the document -->
+    <title></title>
+
+</head>
+
+<!-- used for all the content -->
+<body>
+</body>
+
+<!-- used for the main part of the site -->
+<main>
+</main>
+<!-- used for headers of sections and the page -->
+<!-- contains mostly the headline and sub head of a section -->
+<!-- a html documant can / should have multiple headers and footers -->
+<header>
+</header>
+
+<!-- used for the nav-->
+<!-- nav>ul>li>a,li>a,li>a -->
+<nav>
+</nav>
+
+<!-- identifies a section of an article / a page -->
+<!-- can be comments, reviews -->
+<section>
+</section>
+
+<!--an article can stand for its own and would work without any suroundings and adittional info  -->
+<!-- an article ist often the main part of a page, but doesnt have to be -->
+<article id="articleId">
+</article>
+
+<!-- Only use it if there is no other tag which could fit better to wrap the content -->
+<!-- example: for styling purposes, to separate content into columns -->
+<div>
+</div>
+<!--identify the footer of the section(!) and the page -->
+<!-- a footer contains data about the writer, additional links, contact etc -->
+<!-- a html documant can / should have multiple headers and footers -->
+<!-- footer caould also be at the top of the page -->
+<footer>
+</footer>
+
+<!-- -------------------- TEXT CONTENT TAGS ---------------------- -->
+
+<!-- section of content -->
+<section>
+</section>
+<!-- to mark a quote of somebody -->
+<blockquote>
+    Wer anderen in die Möse beißt ist böse meißt
+    <!-- Used to mark up the author of the text -->
+        <cite>Loki der Penner</cite>
+</blockquote>
+    
+<!-- stuff thats maybe related but not an actual part of the actual content, you could leave it without breaking the pint -->
+<!-- an add can be wrapped in aside to -->
+<aside>
+</aside>
+
+<!-- inside the <body> element, it represents contact information for the document. -->
+<!-- inside an <article> element, it represents contact information for that article. -->
+<address>
+</address>
+
+<!-- contains legal text such as contribution, law, copyright the importence is not on the size but the type of content -->
+<small>
+</small>
+
+<!-- text under a picture, which describes it -->
+<figcaption></figcaption>
+
+<!-- a linkt to a source -->
+<a href="link"></a>
+
+<!-- ---------------------- TEXT FORMATING ------------------------ -->
+
+<!-- italic -->
+<!-- alternate voice or mood, technical phrase, another language etc. -->
+<p>...<i></i>...</p>
+
+<!-- bold -->
+<!-- text to which attention is drawn -->
+<p>...<b></b>...</p>
+
+<!-- strong -->
+<!-- strong importance, seriousness, urgency -->
+<p>....<strong></strong>...</p>
+
+<!-- emphasized content -->
+<p>...<em></em>...</p>
+
+<!-- literaly marks the content like with a text marker -->
+<!-- use for search results for example: should be only used to emphasize content out of context -->
+<p>...<mark></mark>...</p>
+
+<!-- 30th writes the th up-->
+<p>30<sup>th</sup></p>
+<!-- ---------------------- SPECIAL CHARACTER ------------------------ -->
+
+<!-- a non breakin space glues words seperatet threw this space together,  -->
+<!-- so they dont get separated by a line break like "§ 10" -->
+<p>§&nbsp;10</p>
+
+<!-- ---------------------------- LIST TAGS -------------------------- -->
+
+<!-- unordered list -->
+<!-- used for lists, and for the navbar for example -->
+<ul>
+    <li>
+    </li>
+</ul>
+<!-- definition list -->
+<!-- used for a list which contains related data with a title and its content -->
+<dl>
+    <!-- definition title -->
+    <dt>
+        <!-- content, paragraph, image, link- list -->
+        <dd>
+        </dd>
+    </dt>
+</dl>
+
+<!-- DATA-TYPE, create a collection to easyly
+store custom data with javascript -->
+<!-- data - "dataname" -type -->
+<li data-nouppercase-type="string"></li>
+
+<!-- -------------------------- IMAGES ----------------------------- -->
+
+
+<!-- to mark up a picture, illustration, etc -->
+<figure></figure>
+
+<!-- text under a picture, which describes it -->
+<figcaption></figcaption>    
+
+<!-- Depending on the actual viewport width / screen resolution it will choose the right image automaticly -->
+    <!-- by screen resolution: -->
+    <img src = "images/cute-puppy-400.jpg" alt="cute-puppy"
+    srcset="images/cute-puppy-400.jpg,
+            images/cute-puppy-800.jpg 2x,
+            images/cute-puppy-1200.jpg 3x">
+<!-- OR BETTER: -->
+<!-- by pixel width -->
+<!-- cause it pics automaticly the right picture for various resolutions!! -->
+<img src    ="images/cute-puppy-400.jpg" alt="cute-puppy"
+    srcset  ="images/cute-puppy-400.jpg 400w,
+            images/cute-puppy-800.jpg 800w,
+            images/cute-puppy-1200.jpg 1200w,
+            images/cute-puppy-1600.jpg 1600w,
+            images/cute-puppy-2000.jpg 2000w
+            "
+
+    sizes   ="(min-width: 1400px) 5vw,
+            (min-width: 800px) 25vw,
+            (min-width: 10px) 100vw,">
+    <!-- sizes tells the browser how big the picture will be at different sizes, so the srcset can pick the right ones -->
+
+<!-- ----------------------TIME AND DATE TAGS ------------------------ -->
+
+<!-- Date -->
+<time datetime="1914">Year 1914 </time> <!-- means the year 1914 -->
+<time datetime="1914-12"> Dezember 1914</time> <!-- means December 1914 -->
+<time datetime="1914-12-20"> 20th Dec 1914</time>  <!-- means 20 December 1914 -->
+<time datetime="12-20"> 20th Dec</time> <!-- means 20 December any year -->
+<time datetime="1914-W15"> The 15th week of 1914</time> <!-- means week 15 of year 1914 -->
+
+<!-- Date and Times: -->
+<time datetime="1914-12-20T08:00"> 20 Dec 1914 at 8 O'clock in the morning</time> <!-- means 20 December 1914 at 8am -->
+<time datetime="1914-12-20 08:00"> 20 Dec 1914 at 8 O'clock in the morning</time> <!-- also means 20 December 1914 at 8am -->
+<time datetime="1914-12-20 08:30:45"> with seconds</time><!-- with minutes and seconds -->
+<time datetime="1914-12-20 08:30:45.687">with milliseconds </time> <!-- with minutes, seconds, and milliseconds -->
+<!-- UTC Timezone -->
+<time datetime="08:00-03:00"> 8am in Rio de Janeiro </time> <!-- means 8am in Rio de Janeiro (UTC-3 hours)  -->
+<time datetime="08:00+03:00"> 8am in Madagaskar</time> <!-- means 8am in Madagascar (UTC+3 hours)  -->
+
+<!-- Durations: -->
+<time datetime="P2D">  <!-- means a duration of 2 days -->
+<time datetime="PT15H10M">  <!-- means a duration of 15 hours and 10 minutes -->    
+
+
+<!-- ------------------ LINKS & RELATION  ------------------- -->
+<!-- specifies the relation between the document and the link  -->
+
+<!-- necesarry mark a css as a css -->
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+<!-- link to the page of the author -->
+<a rel="author" href="https://www.author.com"></a>
+<!-- link which should not be connected and related to this website-->
+<a rel="nofollow" href="https://www.unrelatedSite.com"></a>
+<!-- creates legal info -->
+<a rel="license" href="https://www.legal-stuff.com"></a>
+<!-- link to the next document of this series -->
+<a rel="next" href="https://www.next-page.com"></a>
+<!-- link to the previous document of this series -->
+<a rel="prev" href="https://www.previous-page.com"></a>
+
+<!-- --------------------- INPUT --------------------------- -->
+            <!-- roles unnecessary! -->
+
+<!-- text-imput area -->
+<input type="text">
+
+<!-- --------------------- ATTRIBUTES----------------------- -->
+
+<!-- DATA-TYPE, create a collection to easyly
+store custom data with javascript -->
+<!-- data - "dataname" -type -->
+<li data-nouppercase-type="string"></li>
+
+<!-- --------------------- ARIA ROLE ATTRIBUTES ---------------------- -->    
+                    <!-- for screenreaders etc. -->
+                <!-- IN A FEW YEARS NOT NECESSARY -->
+
+    <!-- NECESSARY / RECOMENDED: -->
+
+<main role="main"></main>    
+<article role="article"></article>
+<aside role="complementary"></aside>
+
+    <!-- UNNECESSARY: -->
+    <!-- in general unnecessary for interactive elements such as buttons -->
+
+<!-- not necessary  -->
+<a href="link" role="link"></a>
+<!-- not necessary  -->
+<area shape="" coords="" href="link" alt="" role="link">
+<!-- not necessary  -->
+<button role="button"></button>
+<!-- not necessary  -->
+<input type="text" required aria-required="true">
+<!-- not necessary  -->
+<div hidden aria-hidden="true">
+</div>
+
+<!-- ------------------------- MICRODATA SCHEMA-------------------------- -->    
+
+<!-- Itemscope defines the element to apply the microdata -->
+<!-- itemtype shows the url of the Microdata -->
+<article itemscope itemtype="http://schema.org/Recipe">
+<!-- use span to exclude / time in special format -->
+<p>preparation time:<span itemprop="prepTime" content="PT15M"> 15 minutes </span></p>    
+
+</article>
+
+
+
+

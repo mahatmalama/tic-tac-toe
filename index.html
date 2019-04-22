@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+ <!---------------- Internet Explorer FIX ------------------>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+ <!------------------- SCHMARTFON FIX ------------------>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Georgiys Awesome TIC TAC TOE</title>
+    <!-- 160 - 180 Zeichen, 70 - 80 als Vorschau zu sehen -->
+    <meta name="description" content="Georgiys Cheatsheet for HTML 5 and Javascript">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Cheatsheet">
+    <meta name="author" content="Georgiy the best">
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+
+   
+
+</head>
+
+<body>
+   
+<div class="tic-tac-toe-wrapper">
+   <div class="tic-tac-toe">
+
+      <canvas id="tic-tac-toe" width="50" height="400"></canvas>
+
+      <div class="names">
+
+         <div class="names__player-one-name-container">
+            <div class="names__player-container">
+               <h5 class="names__sub-headline">player 1 name:</h5>
+               <h2 class="names__output-one"></h2>
+            </div>
+            <div class="names__input-container">
+                  <input type="text" class="names__input-one">
+                  <button class="button--default names__submit-one">Submit</button>
+            </div>
+         </div>
+         <div class="names__player-two-name-container">
+            <div class="names__player-container">
+               <h5 class="names__sub-headline">player 2 name:</h5>
+               <h2 class="names__output-two"></h2>
+            </div>
+            <div class="names__input-container">
+               <input type="text" class="names__input-two">
+               <button class="button--default names__submit-two">Submit</button>
+            </div>
+         </div>
+
+         <div class="reset">
+            <button class="button--default reset-btn">RESET GAME</button>
+            <button class="button--default total-reset-btn">RESET SCORE</button>
+         </div>
+
+      </div>
+
+
+      
+      <div class="score">
+         <h3 class="score__sub-title">Player vs Computer</h3>
+
+            <h1 class="score__title">SCORE</h1>
+            <div class="score__scores">
+               <h3>
+                  <span class="score__player-one">Player One: </span>
+                  <span class="score__player-one-score">0</span> 
+               </h3> 
+               
+               <h3> 
+                  <span class="score__player-two">Player Two:</span> 
+                  <span class="score__player-two-score">0</span> 
+               </h3>
+
+            </div>
+            <div class="score__buttons">
+               <button class="button--default vs-player">Payer VS Player</button>
+               <button class="button--default vs-computer">Payer VS Computer</button>
+               <button class="button--default vs-super-computer">Payer VS Super - Computer</button>
+               <button class="button--default player-one-begins">Payer 1 begins</button>
+               <button class="button--default player-two-begins">Payer 2 begins</button>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</div>
+
+<script src = "scripts/tic-tac-toe.js"></script>
+
+</body>
