@@ -13,3 +13,6 @@ git branch [branch-name]
 
 git commit -m "[descriptive message]"
 //Records the file snapshots permanently in version history
+
+git commit origin master
+// commits to the default repo
