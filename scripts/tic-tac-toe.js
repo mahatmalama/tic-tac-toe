@@ -304,7 +304,12 @@ function twoInACol(playerColor, smartPoints) {
   }
 }
 function twoDiagonal(playerColor, smartPoints) {
-  
+  if(
+    board[0][0] === activePlayerColor && board[1][1] === activePlayerColor && board[2][2] === activePlayerColor ||
+    board[0][2] === activePlayerColor && board[1][1] === activePlayerColor && board[2][0] === activePlayerColor
+    ){
+       console.log("juhu");
+    }
 }
 
 
