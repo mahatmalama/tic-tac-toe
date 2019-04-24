@@ -198,12 +198,12 @@ function playersTurn() {
 };
 
 function stupidComputerTurn() {
-    
-    if (vsComputerBolean && !win && !fullBoard && activePlayer == 2) {
-                
-        var randomCol = Math.floor(Math.random()*3);
-        var randomRow = Math.floor(Math.random()*3);
-        var counter = 0;
+  
+  if (vsComputerBolean && !win && !fullBoard && activePlayer == 2) {
+        
+    var randomCol = Math.floor(Math.random()*3);
+    var randomRow = Math.floor(Math.random()*3);
+    var counter = 0;
 
         
         while(board[randomCol][randomRow] !== VACANT && counter < 50){
