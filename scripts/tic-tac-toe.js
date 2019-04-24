@@ -214,15 +214,16 @@ function stupidComputerTurn() {
 }
 
 
-
 let nextSmartRow = 0;
 let nextSmartCol = 0;
-
 function smartComputerTurn(){
 
   if (vsSmartComputerBolean && !win && !fullBoard  && activePlayer === 2) {
 
-    smartTwoTokens();
+    vacantSmartBoard();
+    smartTwoTokens(1000, 10000);
+    smartMiddle(100);
+    console.log(smartBoard);
 
     setTimeout(function() {
       drawSquare( nextSmartRow, nextSmartCol , playerTwoColor);
@@ -242,12 +243,9 @@ function smartComputerTurn(){
 }
 
 
-function smartMiddle() {
-  
-}
 
 
-function smartTwoTokens() {
+function smartTwoTokens(smartPointsPlayerOne, smartPointsPlayerTwo) {
   //!!!!!! simultation of computer needs to be deleated:
   if(nextSmartCol <2){
     nextSmartRow ++;
@@ -256,14 +254,12 @@ function smartTwoTokens() {
     nextSmartCol ++;
   }
   // !!!!!
-  twoInARow(playerOneColor, 900);
-  twoInARow(playerTwoColor, 1000);
+  twoInARow(playerOneColor, smartPointsPlayerOne);
+  twoInARow(playerTwoColor, smartPointsPlayerTwo);
   
-  twoInACol(playerOneColor, 900);
-  twoInACol(playerTwoColor, 1000);
-
+  twoInACol(playerOneColor, smartPointsPlayerOne);
+  twoInACol(playerTwoColor, smartPointsPlayerTwo);
 }
-
 function twoInARow(playerColor, smartPoints) {
   let twoInARowCount = 0;
 
@@ -277,7 +273,7 @@ function twoInARow(playerColor, smartPoints) {
         if (twoInARowCount === 2) {
           for(c = 0; c < COL; c++){
             if (board [r][c] === VACANT) {
-              smartBoard [r][c] = smartPoints;
+              smartBoard [r][c] += smartPoints;
               console.log(smartBoard);
             }
           }
@@ -286,7 +282,6 @@ function twoInARow(playerColor, smartPoints) {
     }
   }
 }
-
 function twoInACol(playerColor, smartPoints) {
   let twoInAColCount = 0;
 
@@ -300,8 +295,7 @@ function twoInACol(playerColor, smartPoints) {
         if (twoInAColCount === 2) {
           for (r = 0; r < ROW; r++){
             if (board [r][c] === VACANT) {
-              smartBoard [r][c] = smartPoints;
-              console.log(smartBoard);
+              smartBoard [r][c] += smartPoints;
             }
           }
         }
@@ -309,8 +303,16 @@ function twoInACol(playerColor, smartPoints) {
     }
   }
 }
+function twoDiagonal(playerColor, smartPoints) {
+  
+}
 
 
+function smartMiddle(smartPoints) {
+  if (board[1][1] === VACANT) {
+    smartBoard[1][1] += smartPoints;
+  };
+};
 
 
 
@@ -534,6 +536,7 @@ function vsSmartComputer() {
   playerTwoNameContainer.classList.add("hide");  
   totalReset();
 }
+
 
 
 function changePlayerName(e) {
