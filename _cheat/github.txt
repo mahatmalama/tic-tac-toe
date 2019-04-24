@@ -1,0 +1,15 @@
+
+git status
+// Lists all new or modified files to be committed
+
+git diff
+//Shows file differences not yet staged
+
+git branch
+//Lists all local branches in the current repository
+
+git branch [branch-name]
+//Creates a new branch
+
+git commit -m "[descriptive message]"
+//Records the file snapshots permanently in version history
