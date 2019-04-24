@@ -256,9 +256,12 @@ function smartTwoTokens(smartPointsPlayerOne, smartPointsPlayerTwo) {
   // !!!!!
   twoInARow(playerOneColor, smartPointsPlayerOne);
   twoInARow(playerTwoColor, smartPointsPlayerTwo);
-  
+	
   twoInACol(playerOneColor, smartPointsPlayerOne);
-  twoInACol(playerTwoColor, smartPointsPlayerTwo);
+	twoInACol(playerTwoColor, smartPointsPlayerTwo);
+
+	twoDiagonal(playerOneColor, smartPointsPlayerOne);
+	twoDiagonal(playerTwoColor, smartPointsPlayerTwo);
 }
 function twoInARow(playerColor, smartPoints) {
   let twoInARowCount = 0;
@@ -304,12 +307,20 @@ function twoInACol(playerColor, smartPoints) {
   }
 }
 function twoDiagonal(playerColor, smartPoints) {
-  if(
-    board[0][0] === activePlayerColor && board[1][1] === activePlayerColor && board[2][2] === activePlayerColor ||
-    board[0][2] === activePlayerColor && board[1][1] === activePlayerColor && board[2][0] === activePlayerColor
-    ){
-       console.log("juhu");
-    }
+
+  if ( board[0][0] === playerColor && board[1][1] === playerColor && board[2][2] === VACANT){
+		smartBoard[2][2] += smartPoints;
+	}
+  if ( board[1][1] === playerColor && board[2][2] === playerColor && board[0][0] === VACANT){
+		smartBoard[0][0] += smartPoints;
+	}
+
+  if ( board[2][0] === playerColor && board[1][1] === playerColor && board[0][2] === VACANT){
+		smartBoard[0][2] += smartPoints;
+	}
+  if ( board[0][2] === playerColor && board[1][1] === playerColor && board[2][0] === VACANT){
+		smartBoard[2][0] += smartPoints;
+	}
 }
 
 
