@@ -146,16 +146,6 @@ function drawBoard() {
 drawBoard();
 
 
-
-
-function nextPlayersTurn() {
-
-  activePlayer = (activePlayer%2)+1;
-
-}
-
-
-
 function click(e) {
 
   var xPosition = e.clientX;
@@ -171,6 +161,10 @@ function click(e) {
     smartComputerTurn();
 
   }
+}
+
+function nextPlayersTurn() {
+  activePlayer = (activePlayer%2)+1;
 }
 
 function playersTurn() {
@@ -218,33 +212,27 @@ let nextSmartCol = 0;
 
 function smartComputerTurn(){
 
-
   if (vsSmartComputerBolean && !win && !fullBoard  && activePlayer === 2) {
 
     vacantSmartBoard();
-    smartTwoTokens(1000, 10000);
-		smartMiddle(100);
-    smartCorner(10);
-    smartOneToken(1);
+    smartTwoTokens(10000, 100000);
+		smartMiddle(1000);
+    smartCorner(100);
+    smartOneToken(10);
+    smartVacant(1);
 
     smartColAndRow();
 
     setTimeout(function() {
-      console.log("row="+nextSmartRow +" --- col=" + nextSmartCol);
+      console.log(nextSmartRow + " " + nextSmartCol);
+      console.log(smartBoard);
       drawSquare( nextSmartRow, nextSmartCol, playerTwoColor);
       whoWins();
+
       nextPlayersTurn();
+
     },300);
   }
-
-  //   // 1. if two of my own in a row, (if multiple random)
-  //   // 2. if two of the opponent in a row, (if multiple - where one of my own is)
-  //   smartTwoTokens();
-  //   // 3. if middle free, sigle
-  //   smartMiddle();
-    
-  //   // 4. Corners ( chose the one where either only i have one or the opponent has one where i dont)
-  //   // 5. where i have one where the opponent doesnt or where the opponent has one where i dont, better both
 }
 
 
@@ -353,21 +341,18 @@ function smartOneToken(smartPoints) {
         tokenCounter ++;
       }
     }
-    // console.log("found one token");
     if (tokenCounter === 1){
-      console.log("found one token" );
       for(c = 0; c < COL; c++){
         if(board[r][c] === VACANT){
           smartBoard[r][c] += smartPoints;
         }
-      }
-      console.log(smartBoard);
+      } 
     }
   }
 }
 
 function smartColAndRow() {
-  let biggest = 0;
+  let biggest = -1;
   for (r = 0; r < ROW; r++){
     for(c = 0; c < COL; c++){
       if(smartBoard[r][c] > biggest){
@@ -378,6 +363,16 @@ function smartColAndRow() {
     }
   }
 }
+
+function smartVacant(smartPoints) {
+  for (r = 0; r < ROW; r++){
+    for(c = 0; c < COL; c++){
+      if(board [r][c] === VACANT){
+        smartBoard[r][c] += smartPoints;
+      }
+    }
+  }
+};
 
 function drawn(){
 
@@ -553,6 +548,7 @@ function reset() {
 
   activePlayer = whoBegins;
   win = false;
+  fullBoard = false;
 
   if(vsComputerBolean){
     playerTwoName = "schtupid Computer";
@@ -564,6 +560,7 @@ function reset() {
   }
 
   computerBegins();
+
 }
 
 function totalReset() {
