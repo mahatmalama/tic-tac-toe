@@ -125,26 +125,26 @@ if(vsSmartComputerBolean){
   vacantSmartBoard();
 }
 
+function drawSquare(r, c, color) {
+
+  board[r][c] = color;
+  
+  ctx.fillStyle = color;
+  ctx.fillRect(c*SQ, r*SQ, SQ, SQ);
+  
+  ctx.strokeStyle = "black";
+  ctx.strokeRect(c*SQ, r*SQ, SQ, SQ);
+}  
 
 function drawBoard() {
   for(r = 0; r<ROW; r++){
     for (c = 0; c < COL; c++){
-      drawSquare(c, r, board[r][c] );
+      drawSquare( r, c, board[r][c] );
     }
   }
 }
 drawBoard();
 
-function drawSquare(x, y, color) {
-
-  board[y][x] = color;
-  
-  ctx.fillStyle = color;
-  ctx.fillRect(x*SQ, y*SQ, SQ, SQ);
-  
-  ctx.strokeStyle = "black";
-  ctx.strokeRect(x*SQ, y*SQ, SQ, SQ);
-}  
 
 
 
@@ -176,12 +176,12 @@ function click(e) {
 function playersTurn() {
 
   if (activePlayer === 1) {
-    drawSquare(clickedCol, clickedRow, playerOneColor);
+    drawSquare( clickedRow, clickedCol, playerOneColor);
     whoWins();
     nextPlayersTurn();
 
   } else {
-    drawSquare(clickedCol, clickedRow, playerTwoColor);
+    drawSquare( clickedRow, clickedCol, playerTwoColor);
     whoWins();
     nextPlayersTurn();
   }
@@ -196,7 +196,7 @@ function stupidComputerTurn() {
     var counter = 0;
 
     
-    while(board[randomCol][randomRow] !== VACANT && counter < 50){
+    while(board[randomRow][randomCol] !== VACANT && counter < 50){
 
       counter++;
       
@@ -205,7 +205,7 @@ function stupidComputerTurn() {
       
     }
     setTimeout(function() {
-      drawSquare( randomRow, randomCol, playerTwoColor);
+      drawSquare( randomRow, randomCol,  playerTwoColor);
       whoWins();
       nextPlayersTurn();
     }, 300);
@@ -218,22 +218,23 @@ let nextSmartCol = 0;
 
 function smartComputerTurn(){
 
-console.log(activePlayer);
+
   if (vsSmartComputerBolean && !win && !fullBoard  && activePlayer === 2) {
 
     vacantSmartBoard();
     smartTwoTokens(1000, 10000);
 		smartMiddle(100);
     smartCorner(10);
+    smartOneToken(1);
+
     smartColAndRow();
-    console.log("next smart row is = " + nextSmartRow);
-    console.log("next smart col is = " + nextSmartCol);
-    console.log("-----");
-    // setTimeout(function() {
-      drawSquare( nextSmartRow, nextSmartCol , playerTwoColor);
+
+    setTimeout(function() {
+      console.log("row="+nextSmartRow +" --- col=" + nextSmartCol);
+      drawSquare( nextSmartRow, nextSmartCol, playerTwoColor);
       whoWins();
       nextPlayersTurn();
-    // },300);
+    },300);
   }
 
   //   // 1. if two of my own in a row, (if multiple random)
@@ -339,20 +340,44 @@ function smartCorner(smartPoints) {
   if(board[2][2]===VACANT){
     smartBoard[2][2] += smartPoints;
   }
-};
+}
+
+function smartOneToken(smartPoints) {
+
+  let tokenCounter = 0;
+
+  for (r = 0; r < ROW; r++){
+    tokenCounter = 0;
+    for(c = 0; c < COL; c++){
+      if(board [r][c] != VACANT){
+        tokenCounter ++;
+      }
+    }
+    // console.log("found one token");
+    if (tokenCounter === 1){
+      console.log("found one token" );
+      for(c = 0; c < COL; c++){
+        if(board[r][c] === VACANT){
+          smartBoard[r][c] += smartPoints;
+        }
+      }
+      console.log(smartBoard);
+    }
+  }
+}
 
 function smartColAndRow() {
   let biggest = 0;
   for (r = 0; r < ROW; r++){
     for(c = 0; c < COL; c++){
-      if(smartBoard [r][c] > biggest){
+      if(smartBoard[r][c] > biggest){
         biggest = smartBoard[r][c];
         nextSmartRow = r;
         nextSmartCol = c;
       }
     }
   }
-};
+}
 
 function drawn(){
 
