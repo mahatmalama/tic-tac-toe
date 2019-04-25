@@ -51,7 +51,7 @@ const VACANT = "white";
 var vsComputerBolean = false;
 // !!!!!!!! set to false again or 
 // hide second player, and change player name
-var vsSmartComputerBolean = true;
+var vsSmartComputerBolean = false;
 var computersTurn = false;
 
 // var player = {
@@ -88,10 +88,12 @@ gameContainer.style.width = gameWidth.toString() + "px";
 scoreTextOne.style.color = playerOneColor.toString();
 scoreTextTwo.style.color = playerTwoColor.toString();
 
-whoAgainstWhom.innerHTML = "Payer VS. Player";
+whoAgainstWhom.innerHTML = "";
 
 
-
+vsSmartComputer();
+// vsComputer();
+// vsPlayer();
 
 // !!!!!!!!!!!!!!!!!! BOARD [y][x]  ([row][column])  and not [x][y] because of the readability of the board in the terminal !!!!!!!!!!!
 
@@ -149,7 +151,6 @@ function drawSquare(x, y, color) {
 function nextPlayersTurn() {
 
   activePlayer = (activePlayer%2)+1;
-  // activePlayer = activePlayer+1;
 
 }
 
@@ -173,8 +174,6 @@ function click(e) {
 }
 
 function playersTurn() {
-
-  // nextPlayersTurn();
 
   if (activePlayer === 1) {
     drawSquare(clickedCol, clickedRow, playerOneColor);
@@ -216,20 +215,25 @@ function stupidComputerTurn() {
 
 let nextSmartRow = 0;
 let nextSmartCol = 0;
+
 function smartComputerTurn(){
 
+console.log(activePlayer);
   if (vsSmartComputerBolean && !win && !fullBoard  && activePlayer === 2) {
 
     vacantSmartBoard();
     smartTwoTokens(1000, 10000);
-    smartMiddle(100);
-    console.log(smartBoard);
-
-    setTimeout(function() {
+		smartMiddle(100);
+    smartCorner(10);
+    smartColAndRow();
+    console.log("next smart row is = " + nextSmartRow);
+    console.log("next smart col is = " + nextSmartCol);
+    console.log("-----");
+    // setTimeout(function() {
       drawSquare( nextSmartRow, nextSmartCol , playerTwoColor);
       whoWins();
       nextPlayersTurn();
-    },300);
+    // },300);
   }
 
   //   // 1. if two of my own in a row, (if multiple random)
@@ -246,14 +250,7 @@ function smartComputerTurn(){
 
 
 function smartTwoTokens(smartPointsPlayerOne, smartPointsPlayerTwo) {
-  //!!!!!! simultation of computer needs to be deleated:
-  if(nextSmartCol <2){
-    nextSmartRow ++;
-  
-  } else if (nextSmartCol <2){
-    nextSmartCol ++;
-  }
-  // !!!!!
+
   twoInARow(playerOneColor, smartPointsPlayerOne);
   twoInARow(playerTwoColor, smartPointsPlayerTwo);
 	
@@ -277,7 +274,6 @@ function twoInARow(playerColor, smartPoints) {
           for(c = 0; c < COL; c++){
             if (board [r][c] === VACANT) {
               smartBoard [r][c] += smartPoints;
-              console.log(smartBoard);
             }
           }
         }
@@ -330,8 +326,33 @@ function smartMiddle(smartPoints) {
   };
 };
 
+function smartCorner(smartPoints) {
+  if(board[0][0]===VACANT){
+  smartBoard[0][0] += smartPoints;
+  }
+  if(board[0][2]===VACANT){
+    smartBoard[0][2] += smartPoints;
+  }
+  if(board[2][0]===VACANT){
+    smartBoard[2][0] += smartPoints;
+  }
+  if(board[2][2]===VACANT){
+    smartBoard[2][2] += smartPoints;
+  }
+};
 
-
+function smartColAndRow() {
+  let biggest = 0;
+  for (r = 0; r < ROW; r++){
+    for(c = 0; c < COL; c++){
+      if(smartBoard [r][c] > biggest){
+        biggest = smartBoard[r][c];
+        nextSmartRow = r;
+        nextSmartCol = c;
+      }
+    }
+  }
+};
 
 function drawn(){
 
@@ -552,7 +573,6 @@ function vsSmartComputer() {
   playerTwoNameContainer.classList.add("hide");  
   totalReset();
 }
-
 
 
 function changePlayerName(e) {
